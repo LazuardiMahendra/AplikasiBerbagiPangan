@@ -1,0 +1,77 @@
+import {
+  IonGrid,
+  IonCol,
+  IonRow,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonLabel,
+  IonItem,
+  IonList,
+  IonInput,
+  IonCardContent,
+  IonCard,
+  IonButton,
+  IonIcon,
+  IonCardHeader,
+  IonImg,
+  IonCardTitle,
+  IonCardSubtitle,
+  IonFab,
+  IonFabButton,
+  IonText,
+} from "@ionic/react";
+import "./Login.css";
+import React, { useState, useEffect } from "react";
+import { loginUser } from "../../firebase";
+import { toast } from "../../toast";
+
+const Login: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function login() {
+    const result = await loginUser(email, password);
+    if (result) {
+      toast("login failed");
+    } else {
+      toast("login successfully");
+    }
+  }
+  return (
+    <section>
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Login</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="conatiner">
+          <div className="form-input">
+            <IonItem>
+              <IonInput
+                type="email"
+                placeholder="Email"
+                onIonChange={(e: any) => setEmail(e.target.value)}
+              />
+            </IonItem>
+            <IonItem>
+              <IonInput
+                type="password"
+                placeholder="Password"
+                onIonChange={(e: any) => setPassword(e.target.value)}
+              />
+            </IonItem>
+          </div>
+          <IonButton className="bt-login" expand="block" onClick={login}>
+            Login
+          </IonButton>
+        </IonContent>
+      </IonPage>
+    </section>
+  );
+};
+
+export default Login;

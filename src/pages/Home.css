@@ -1,0 +1,33 @@
+.ion-cards {
+  width: 40%;
+  height: 98%;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.mg-top {
+  margin-top: 40px;
+}
+.mg-button {
+  position: absolute;
+  text-align: center;
+  width: 96%;
+  margin: 2%;
+  bottom: 5%
+}
+
+@media screen and (max-width: 1024px) {
+  .ion-cards {
+    width:100%;
+    margin: 0%;
+    height: 100%;
+  }
+  
+  .mg-button{
+    font-size: small;
+
+  }
+
+
+
+}
